@@ -53,7 +53,7 @@ module Lita
         }
       )
 
-      def group_mention(response)
+      def group_mention(response) # rubocop:disable AbcSize
         return if response.message.body =~ /group\s+mention/
         groups = response.matches.flatten
 

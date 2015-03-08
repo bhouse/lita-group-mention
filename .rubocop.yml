@@ -1,0 +1,8 @@
+ClassLength:
+  Max: 120
+
+FileName:
+  Enabled: false
+
+LineLength:
+  Max: 120
