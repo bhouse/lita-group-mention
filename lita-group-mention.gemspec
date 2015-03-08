@@ -3,8 +3,8 @@ Gem::Specification.new do |spec|
   spec.version       = '1.0.0'
   spec.authors       = ['Ben House']
   spec.email         = ['ben@benhouse.io']
-  spec.description   = %w(cc a list of users when a group is @mentioned)
-  spec.summary       = %w(add users to a group, @mention the group, and the plugin will cc each user)
+  spec.description   = 'cc a list of users when a group is @mentioned'
+  spec.summary       = 'add users to a group, @mention the group, and the plugin will cc each user'
   spec.homepage      = 'https://github.com/bhouse/lita-group-mention'
   spec.license       = 'MIT'
   spec.metadata      = { 'lita_plugin_type' => 'handler' }
