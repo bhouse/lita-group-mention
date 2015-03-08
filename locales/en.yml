@@ -1,0 +1,23 @@
+en:
+  lita:
+    handlers:
+      group_mention:
+        add_member: 'Added @%{user} to %{group}'
+        group_does_not_exist: '%{group} does not exist'
+        help:
+          add_user_key: 'group mention add <user> to <group>'
+          add_user_value: '@mention <user> when <group> is mentioned'
+          remove_group_key: 'group mention remove group <group>'
+          remove_group_value: 'remove the mention group completely'
+          remove_user_key: 'group mention remove <user> from <group>'
+          remove_user_value: 'remove <user> from list of mentions for <group>'
+          show_group_key: 'group mention show group <group>'
+          show_group_value: 'show users for <group>'
+          show_groups_key: 'group mention show groups'
+          show_groups_value: 'show all the groups and their users'
+          show_user_key: 'group mention show user <user>'
+          show_user_value: 'show all the groups <user> is a member of'
+        mention:
+          cc: 'cc '
+        remove_group: 'Removed the %{group} group'
+        remove_member: 'Removed @%{user} from %{group}'
