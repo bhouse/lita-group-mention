@@ -1,6 +1,6 @@
 Gem::Specification.new do |spec|
   spec.name          = 'lita-group-mention'
-  spec.version       = '1.0.1'
+  spec.version       = '1.0.2'
   spec.authors       = ['Ben House']
   spec.email         = ['ben@benhouse.io']
   spec.description   = 'cc a list of users when a group is @mentioned'
