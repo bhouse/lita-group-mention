@@ -129,4 +129,11 @@ describe Lita::Handlers::GroupMention, lita_handler: true do
       )
     end
   end
+
+  context 'sending a message with multiple mentions of non-groups' do
+    it "doesn't respond with a cc" do
+      send_message('Hello @user1 @user2')
+      expect(replies.last).not_to match(/^cc/)
+    end
+  end
 end

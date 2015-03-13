@@ -56,10 +56,7 @@ module Lita
       def group_mention(response) # rubocop:disable AbcSize
         return if response.message.body =~ /group\s+mention/
         groups = response.matches.flatten
-
-        groups.each do |g|
-          groups.delete(g) unless redis_groups.keys.include?(g)
-        end
+        groups.reject! { |g| !redis_groups.keys.include?(g) }
         return if groups.empty?
 
         response.reply(t('mention.cc') + union_members(groups))
