@@ -85,8 +85,8 @@ describe Lita::Handlers::GroupMention, lita_handler: true do
   context 'commands sent without @ mentions' do
     include_examples 'commands' do
       let(:redis) { redis_connection }
-      let(:chat_user) { 'test_user1' }
-      let(:chat_group) { 'test_group1' }
+      let(:chat_user) { 'test_user.1-0' }
+      let(:chat_group) { 'test_group.1-0' }
       let(:command_user) { chat_user }
       let(:command_group) { chat_group }
     end
@@ -95,8 +95,8 @@ describe Lita::Handlers::GroupMention, lita_handler: true do
   context 'commands sent with @ mentions' do
     include_examples 'commands' do
       let(:redis) { redis_connection }
-      let(:chat_user) { 'test_user1' }
-      let(:chat_group) { 'test_group1' }
+      let(:chat_user) { 'test_user.1-0' }
+      let(:chat_group) { 'test_group.1-0' }
       let(:command_user) { '@' + chat_user }
       let(:command_group) { '@' + chat_group }
     end
