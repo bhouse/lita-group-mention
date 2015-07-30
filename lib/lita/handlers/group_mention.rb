@@ -3,9 +3,9 @@ module Lita
   module Handlers
     # GroupMention handler class
     class GroupMention < Handler
-      route(/@(\w+)+/, :group_mention)
+      route(/@([a-zA-Z0-9.\-_]+)+/, :group_mention)
       route(
-        /^group\s+mention\s+add\s+@?(?<user>\w+)\s+to\s+@?(?<group>\w+)/,
+        /^group\s+mention\s+add\s+@?(?<user>[a-zA-Z0-9.\-_]+)\s+to\s+@?(?<group>[a-zA-Z0-9.\-_]+)/,
         :add_member,
         command: true,
         help: {
@@ -13,7 +13,7 @@ module Lita
         }
       )
       route(
-        /^group\s+mention\s+remove\s+@?(?<user>\w+)\s+from\s+@?(?<group>\w+)/,
+        /^group\s+mention\s+remove\s+@?(?<user>[a-zA-Z0-9.\-_]+)\s+from\s+@?(?<group>[a-zA-Z0-9.\-_]+)/,
         :remove_member,
         command: true,
         help: {
@@ -21,7 +21,7 @@ module Lita
         }
       )
       route(
-        /^group\s+mention\s+remove\s+group\s+@?(?<group>\w+)/,
+        /^group\s+mention\s+remove\s+group\s+@?(?<group>[a-zA-Z0-9.\-_]+)/,
         :remove_group,
         command: true,
         help: {
@@ -37,7 +37,7 @@ module Lita
         }
       )
       route(
-        /^group\s+mention\s+show\s+group\s+@?(?<group>\w+)/,
+        /^group\s+mention\s+show\s+group\s+@?(?<group>[a-zA-Z0-9.\-_]+)/,
         :show_group,
         command: true,
         help: {
@@ -45,7 +45,7 @@ module Lita
         }
       )
       route(
-        /^group\s+mention\s+show\s+user\s+@?(?<user>\w+)/,
+        /^group\s+mention\s+show\s+user\s+@?(?<user>[a-zA-Z0-9.\-_]+)/,
         :show_user,
         command: true,
         help: {
