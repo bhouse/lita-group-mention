@@ -121,16 +121,14 @@ module Lita
         response.reply("#{user}: #{get_user_memberships(user).join(', ')}")
       end
 
-      def preload_groups(payload)
-        if config.groups.is_a?(Hash)
-          config.groups.each do |group,members|
-            members.each do |member|
-              log.info("Load group mention: user[#{member}] group[#{group}]")
-              redis.sadd("user:#{member}", group)
-              redis.sadd("group:#{group}", member)
-            end
+      def preload_groups(_)
+        config.groups.each do |group, members|
+          members.each do |member|
+            log.info("Load group mention: user[#{member}] group[#{group}]")
+            redis.sadd("user:#{member}", group)
+            redis.sadd("group:#{group}", member)
           end
-        end
+        end if config.groups.is_a?(Hash)
       end
 
       private
