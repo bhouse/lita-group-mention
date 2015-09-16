@@ -11,6 +11,18 @@ Add lita-group-mention to your Lita instance's Gemfile:
 gem "lita-group-mention"
 ```
 
+## Configuration (optional)
+
+Preload mention groups and members using configuration:
+
+```ruby
+config.handlers.group_mention.groups =
+  {
+    'ops' => ['ops1','ops2']
+    'devs' => ['dev1','dev2']
+  }
+```
+
 ## Usage
 
 This plugin will monitor messages for mentions of groups, and expand the group
