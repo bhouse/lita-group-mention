@@ -3,6 +3,10 @@ module Lita
   module Handlers
     # GroupMention handler class
     class GroupMention < Handler
+      # Preload mention groups into redis
+      # configure format: {'group1' => ['member1', 'member2']}
+      config :groups, type: Hash, default: nil
+
       route(/@([a-zA-Z0-9.\-_]+)+/, :group_mention)
       route(
         /^group\s+mention\s+add\s+@?(?<user>[a-zA-Z0-9.\-_]+)\s+to\s+@?(?<group>[a-zA-Z0-9.\-_]+)/,
@@ -52,6 +56,8 @@ module Lita
           t('help.show_user_key') => t('help.show_user_value')
         }
       )
+
+      on :loaded, :preload_groups
 
       def group_mention(response) # rubocop:disable AbcSize
         return if response.message.body =~ /group\s+mention/
@@ -113,6 +119,16 @@ module Lita
       def show_user(response)
         user = response.match_data['user']
         response.reply("#{user}: #{get_user_memberships(user).join(', ')}")
+      end
+
+      def preload_groups(_)
+        config.groups.each do |group, members|
+          members.each do |member|
+            log.info("Load group mention: user[#{member}] group[#{group}]")
+            redis.sadd("user:#{member}", group)
+            redis.sadd("group:#{group}", member)
+          end
+        end if config.groups.is_a?(Hash)
       end
 
       private
