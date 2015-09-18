@@ -2,7 +2,7 @@ module Lita
   # Lita Handler module
   module Handlers
     # GroupMention handler class
-    class GroupMention < Handler
+    class GroupMention < Handler # rubocop:disable Metrics/ClassLength
       # Preload mention groups into redis
       # configure format: {'group1' => ['member1', 'member2']}
       config :groups, type: Hash, default: nil
